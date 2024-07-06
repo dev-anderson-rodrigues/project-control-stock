@@ -72,5 +72,10 @@ export const Form = styled.form<{ hasError?: boolean }>`
     .p_errors {
       color: red;
     }
+    .labelCode {
+      width: 50%;
+      display: flex;
+      align-items: center;
+    }
   }
 `;

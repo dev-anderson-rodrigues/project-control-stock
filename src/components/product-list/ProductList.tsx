@@ -4,11 +4,11 @@ import Button from "../Button";
 
 const ProductList = () => {
   const { products, setShowModal, showModal, setExist } = useProducts();
-  const getByIdProduct = (id: number) => {
-    console.log(id);
+  const getByIdProduct = (code: number) => {
+    console.log(code);
     // const product = products.filter(p => p.id === id);
-    setShowModal(!showModal);
     setExist(true);
+    setShowModal(!showModal);
   };
 
   return (
@@ -20,7 +20,7 @@ const ProductList = () => {
           <span>Quantidade</span>
         </li>
         {products.map((product) => (
-          <li key={product.id}>
+          <li key={product.code}>
             <div>
               <Button className="button_name_product">{product.name}</Button>
             </div>
@@ -30,7 +30,7 @@ const ProductList = () => {
               <Button
                 className="button_edit"
                 onClick={() => {
-                  getByIdProduct(product.id);
+                  getByIdProduct(product.code);
                 }}
               >
                 Editar

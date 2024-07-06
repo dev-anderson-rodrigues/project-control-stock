@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 
 export interface Product {
-  id: number;
+  code: number;
   name: string;
   description: string;
   isActive: boolean;
@@ -12,11 +12,11 @@ export interface Product {
 
 interface ProductsContextType {
   products: Product[];
+  setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
   showModal: boolean;
   setShowModal: (value: boolean) => void;
   exist: boolean;
-  setExist: (value: boolean) => void;
-  setProducts: (value: Product[]) => void;
+  setExist: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ProductsContext = createContext<ProductsContextType | undefined>(
@@ -27,7 +27,7 @@ const ProductsProvider = ({ children }: { children: ReactNode }) => {
   const [exist, setExist] = useState(false);
   const [products, setProducts] = useState<Product[]>([
     {
-      id: 1,
+      code: 1,
       name: "Produto 1",
       description: "Descrição do produto 1",
       price: 100,
@@ -41,9 +41,9 @@ const ProductsProvider = ({ children }: { children: ReactNode }) => {
     <ProductsContext.Provider
       value={{
         products,
-        setShowModal,
         setProducts,
         showModal,
+        setShowModal,
         exist,
         setExist,
       }}
