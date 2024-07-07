@@ -10,9 +10,8 @@ export const Container = styled.div`
   ul li {
     display: flex;
     width: 100%;
-    height: 50px;
+    height: 65px;
     border-bottom: 1px solid #c0c0c0;
-    position: relative;
 
     &.title_list {
       border-bottom: 2px solid #c0c0c0;
@@ -56,17 +55,19 @@ export const Container = styled.div`
       }
     }
     .buttons {
-      position: absolute;
-      right: 30px;
-      top: 50%;
-      width: 10%;
-      transform: translateY(-50%);
-
+      display: flex;
+      flex-direction: column;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-right: 20px;
+      width: 20%;
       Button {
         width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
         text-align: center;
-        height: 70%;
-        border-radius: 10px;
+        height: 100%;
+        border-radius: 5px;
         background: none;
         border: none;
         color: #1e90ff;

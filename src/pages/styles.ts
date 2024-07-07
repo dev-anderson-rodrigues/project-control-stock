@@ -32,7 +32,6 @@ export const Container = styled.div`
     grid-auto-flow: column;
     width: 100%;
     height: 40px;
-    /* padding: 5px 0px 5px 0px; */
     justify-content: flex-end;
     align-items: flex-end;
     gap: 5px;

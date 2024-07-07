@@ -3,12 +3,14 @@ import * as S from "./styles";
 import Button from "../Button";
 
 const ProductList = () => {
-  const { products, setShowModal, showModal, setExist } = useProducts();
+  const { products, setShowModal, setExist, setCurrentProduct } = useProducts();
   const getByIdProduct = (code: number) => {
-    console.log(code);
-    // const product = products.filter(p => p.id === id);
-    setExist(true);
-    setShowModal(!showModal);
+    const product = products.find((p) => p.code === code);
+    if (product) {
+      setCurrentProduct(product);
+      setExist(true);
+      setShowModal(true);
+    }
   };
 
   return (
@@ -16,16 +18,21 @@ const ProductList = () => {
       <ul>
         <li className="title_list">
           <span>Produto</span>
-          <span>Preço</span>
-          <span>Quantidade</span>
+          <span>Código</span>
+          <span>Preço(R$)</span>
+          <span>Categoria</span>
+          <span style={{ width: "100%" }}>Quantidade</span>
+          <span style={{ width: "30%" }}></span>
         </li>
         {products.map((product) => (
           <li key={product.code}>
             <div>
               <Button className="button_name_product">{product.name}</Button>
             </div>
+            <div>{product.code}</div>
             <div>{product.price}</div>
-            <div>{product.quantity}</div>
+            <div>{product.category}</div>
+            <div style={{ width: "80%" }}>{product.quantity}</div>
             <span className="buttons">
               <Button
                 className="button_edit"

@@ -1,22 +1,46 @@
 import * as S from "./styles";
 import Button from "../Button";
 import { Product, useProducts } from "../../context/productsContext";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useState } from "react";
-// import { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
 
 const ProductForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid, isSubmitting },
   } = useForm<Product>({ mode: "onChange" });
-  const { exist, products } = useProducts();
+  const {
+    exist,
+    products,
+    onSubmit,
+    currentProduct,
+    setShowModal,
+    showModal,
+    sending,
+    setSending,
+  } = useProducts();
   const [warningMessage, setWarningMessage] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  const onSubmit: SubmitHandler<Product> = (payload) => {
-    console.log(payload);
-  };
+  useEffect(() => {
+    if (currentProduct) reset(currentProduct);
+  }, [currentProduct, reset]);
+
+  useEffect(() => {
+    const handleSending = () => {
+      if (sending) {
+        setTimeout(() => {
+          setSending(() => false);
+          setShowSuccessMessage(() => true);
+        }, 1000);
+      }
+      if (showSuccessMessage) setTimeout(() => setShowModal(false), 1000);
+    };
+
+    handleSending();
+  }, [sending, setSending, setShowModal]);
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -76,6 +100,7 @@ const ProductForm = () => {
             placeholder="Produto"
             {...register("name", {
               required: "Nome do produto é obrigatório",
+              min: 1,
               onChange: handleNameChange,
             })}
           />
@@ -96,6 +121,7 @@ const ProductForm = () => {
             placeholder="Categoria"
             {...register("category", {
               required: "Categoria é obrigatória",
+              min: 1,
             })}
           />
           {errors.category && (
@@ -156,35 +182,46 @@ const ProductForm = () => {
             id="description"
             {...register("description", {
               required: "Descrição é obrigatória",
+              min: 1,
             })}
           />
           {errors.description && (
             <p className="p_errors">{errors.description.message}</p>
           )}
         </label>
-      </div>
-      <div>
-        {exist ? (
-          <Button
-            type="submit"
-            disabled={!isValid || isSubmitting}
-            style={{
-              backgroundColor: isValid && !isSubmitting ? "#007bff" : "#cccccc",
-            }}
-          >
-            Atualizar
-          </Button>
-        ) : (
-          <Button
-            type="submit"
-            disabled={!isValid || isSubmitting}
-            style={{
-              backgroundColor: isValid && !isSubmitting ? "#007bff" : "#cccccc",
-            }}
-          >
-            Cadastrar
-          </Button>
+        {sending && !showSuccessMessage && <p>Enviando....</p>}
+        {showSuccessMessage && exist && (
+          <p>Produto atualizado com sucesso...</p>
         )}
+        {showSuccessMessage && !exist && (
+          <p>Produto cadastrado com sucesso...</p>
+        )}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+        }}
+      >
+        <Button
+          type="submit"
+          disabled={(!isValid && exist) || isSubmitting}
+          style={{
+            backgroundColor: isValid && !isSubmitting ? "#007bff" : "#cccccc",
+          }}
+        >
+          {exist ? "Atualizar" : "Cadastrar"}
+        </Button>
+        <Button
+          onClick={() => {
+            setShowModal(!showModal);
+            setSending(false);
+            setShowSuccessMessage(false);
+          }}
+          style={{ backgroundColor: "red" }}
+        >
+          Cancelar
+        </Button>
       </div>
     </S.Form>
   );

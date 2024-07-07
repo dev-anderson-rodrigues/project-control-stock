@@ -2,16 +2,18 @@ import * as S from "./styles";
 import Button from "../components/Button";
 import ProductList from "../components/product-list/ProductList";
 import ProductForm from "../components/product-form/ProductForm";
-import { FormEvent } from "react";
 import { useProducts } from "../context/productsContext";
 
 const Products = () => {
-  const { showModal, setShowModal, setExist } = useProducts();
+  const {
+    showModal,
+    setExist,
+    setShowModal,
+    setCurrentProduct,
+  } = useProducts();
 
-  const handleModalClick = (event: FormEvent) => {
-    event.stopPropagation();
-  };
   const handleClick = () => {
+    setCurrentProduct(null);
     setShowModal(!showModal);
     setExist(false);
   };
@@ -31,8 +33,8 @@ const Products = () => {
         </div>
         <ProductList />
         {showModal && (
-          <S.ModalBackdrop onClick={handleClick}>
-            <S.ModalContent onClick={handleModalClick}>
+          <S.ModalBackdrop>
+            <S.ModalContent>
               <ProductForm />
             </S.ModalContent>
           </S.ModalBackdrop>

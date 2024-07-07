@@ -1,4 +1,5 @@
 import { ReactNode, createContext, useContext, useState } from "react";
+import { SubmitHandler } from "react-hook-form";
 
 export interface Product {
   code: number;
@@ -16,7 +17,12 @@ interface ProductsContextType {
   showModal: boolean;
   setShowModal: (value: boolean) => void;
   exist: boolean;
+  sending: boolean;
+  setSending: React.Dispatch<React.SetStateAction<boolean>>;
   setExist: React.Dispatch<React.SetStateAction<boolean>>;
+  onSubmit: SubmitHandler<Product>;
+  currentProduct: Product | null;
+  setCurrentProduct: React.Dispatch<React.SetStateAction<Product | null>>;
 }
 
 const ProductsContext = createContext<ProductsContextType | undefined>(
@@ -25,9 +31,11 @@ const ProductsContext = createContext<ProductsContextType | undefined>(
 const ProductsProvider = ({ children }: { children: ReactNode }) => {
   const [showModal, setShowModal] = useState(false);
   const [exist, setExist] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [currentProduct, setCurrentProduct] = useState<Product | null>(null);
   const [products, setProducts] = useState<Product[]>([
     {
-      code: 1,
+      code: 123,
       name: "Produto 1",
       description: "Descrição do produto 1",
       price: 100,
@@ -36,16 +44,33 @@ const ProductsProvider = ({ children }: { children: ReactNode }) => {
       quantity: 10,
     },
   ]);
-  // console.log("aqui" + currentProductId);
+
+  const onSubmit: SubmitHandler<Product> = (payload) => {
+    const productIndex = products.findIndex((p) => p.code === payload.code);
+
+    if (productIndex !== -1) {
+      const updatedProducts = [...products];
+      updatedProducts[productIndex] = payload;
+      setProducts(updatedProducts);
+    } else {
+      setProducts([...products, payload]);
+    }
+    setSending(true);
+  };
   return (
     <ProductsContext.Provider
       value={{
         products,
         setProducts,
+        sending,
+        setSending,
         showModal,
         setShowModal,
         exist,
         setExist,
+        onSubmit,
+        currentProduct,
+        setCurrentProduct,
       }}
     >
       {children}
