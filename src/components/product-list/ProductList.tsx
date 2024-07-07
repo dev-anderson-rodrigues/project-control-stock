@@ -3,7 +3,13 @@ import * as S from "./styles";
 import Button from "../Button";
 
 const ProductList = () => {
-  const { products, setShowModal, setExist, setCurrentProduct } = useProducts();
+  const {
+    products,
+    setProducts,
+    setShowModal,
+    setExist,
+    setCurrentProduct,
+  } = useProducts();
   const getByIdProduct = (code: number) => {
     const product = products.find((p) => p.code === code);
     if (product) {
@@ -12,7 +18,18 @@ const ProductList = () => {
       setShowModal(true);
     }
   };
+  const deleteProduct = (code: number) => {
+    const productIndex = products.findIndex((product) => product.code === code);
+    if (productIndex !== -1) {
+      const updatedProducts = [...products];
 
+      updatedProducts[productIndex].isActive = false;
+
+      setProducts(updatedProducts);
+      console.log("aqui");
+    }
+  };
+  const activeProducts = products.filter((product) => product.isActive);
   return (
     <S.Container>
       <ul>
@@ -24,7 +41,7 @@ const ProductList = () => {
           <span style={{ width: "100%" }}>Quantidade</span>
           <span style={{ width: "30%" }}></span>
         </li>
-        {products.map((product) => (
+        {activeProducts.map((product) => (
           <li key={product.code}>
             <div>
               <Button className="button_name_product">{product.name}</Button>
@@ -42,7 +59,12 @@ const ProductList = () => {
               >
                 Editar
               </Button>
-              <Button className="button_delete">Deletar</Button>
+              <Button
+                className="button_delete"
+                onClick={() => deleteProduct(product.code)}
+              >
+                Deletar
+              </Button>
             </span>
           </li>
         ))}

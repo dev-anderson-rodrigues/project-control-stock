@@ -83,7 +83,7 @@ const ProductForm = () => {
               validate: (value) => {
                 return products.some((product) => product.code === value) &&
                   exist === false
-                  ? "Este código já existe"
+                  ? "Este produto já existe, o mesmo se encontra na listagem ou em saída."
                   : true;
               },
             })}

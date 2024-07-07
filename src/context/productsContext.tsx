@@ -53,7 +53,18 @@ const ProductsProvider = ({ children }: { children: ReactNode }) => {
       updatedProducts[productIndex] = payload;
       setProducts(updatedProducts);
     } else {
-      setProducts([...products, payload]);
+      setProducts([
+        ...products,
+        {
+          code: payload.code,
+          name: payload.name,
+          description: payload.description,
+          price: payload.price,
+          category: payload.category,
+          isActive: true,
+          quantity: payload.quantity,
+        },
+      ]);
     }
     setSending(true);
   };
