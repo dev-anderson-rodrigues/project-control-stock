@@ -41,6 +41,7 @@ export const Form = styled.form<{ hasError?: boolean }>`
     input,
     textarea {
       width: 100%;
+      max-width: 100%;
       height: 30px;
       border-radius: 5px;
       border: 2px solid ${(props) => (props.hasError ? "red" : "#87ceeb")};
@@ -50,6 +51,10 @@ export const Form = styled.form<{ hasError?: boolean }>`
       color: #000;
       padding-left: 10px;
       outline: none;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
     }
 
     button {

@@ -4,6 +4,8 @@ import ProductList from "../components/product-list/ProductList";
 import ProductForm from "../components/product-form/ProductForm";
 import { useProducts } from "../context/productsContext";
 
+import Modal from "../components/component-modal/Modal";
+
 const Products = () => {
   const {
     showModal,
@@ -24,6 +26,7 @@ const Products = () => {
         <div className="container_h3">
           <h3>Controle de Produtos</h3>
         </div>
+
         <div className="container_Buttons">
           <Button className="b_cadastrar" onClick={handleClick}>
             Cadastrar produto
@@ -33,11 +36,14 @@ const Products = () => {
         </div>
         <ProductList />
         {showModal && (
-          <S.ModalBackdrop>
-            <S.ModalContent>
-              <ProductForm />
-            </S.ModalContent>
-          </S.ModalBackdrop>
+          // <S.ModalBackdrop>
+          //   <S.ModalContent>
+          //     <ProductForm />
+          //   </S.ModalContent>
+          // </S.ModalBackdrop>
+          <Modal>
+            <ProductForm />
+          </Modal>
         )}
       </S.Container>
     </>

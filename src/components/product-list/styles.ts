@@ -88,3 +88,51 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const ContainerDetails = styled.div`
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+
+  h2 {
+    padding: 10px;
+
+    span {
+      word-wrap: break-word;
+      font-weight: bold;
+      font-size: 18px;
+      flex-wrap: wrap;
+      color: #1e90ff;
+      font-family: "Poppins", sans-serif;
+    }
+  }
+
+  div {
+    display: grid;
+    width: 100%;
+    justify-content: flex-end;
+
+    button {
+      width: 100%;
+      padding: 7px 15px 7px 15px;
+      text-align: center;
+      height: 100%;
+      border-radius: 5px;
+      background: none;
+      border: none;
+      color: #fff;
+      background-color: #1e90ff;
+      cursor: pointer;
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      font-weight: 800;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        transition: all 0.5s ease-in-out;
+        background-color: #dc143c;
+      }
+    }
+  }
+`;
