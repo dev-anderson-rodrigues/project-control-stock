@@ -9,7 +9,6 @@ export const Container = styled.div`
 
   ul li {
     display: flex;
-    width: 100%;
     height: 65px;
     border-bottom: 1px solid #c0c0c0;
 

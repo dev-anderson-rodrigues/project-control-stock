@@ -2,7 +2,7 @@ import { Product, useProducts } from "../../context/productsContext";
 import * as S from "./styles";
 import Button from "../Button";
 import ProductFilter from "../product-filter/ProductFilter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../component-modal/Modal";
 
 const ProductList = () => {
@@ -14,8 +14,12 @@ const ProductList = () => {
     currentProduct,
     setCurrentProduct,
   } = useProducts();
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [modalDetails, setModalDetails] = useState<boolean>(false);
+
+  useEffect(() => {
+    setFilteredProducts(products.filter((product) => product.isActive));
+  }, [products]);
 
   const getByIdProduct = (code: number) => {
     const product = products.find((p) => p.code === code);
@@ -33,7 +37,6 @@ const ProductList = () => {
       updatedProducts[productIndex].isActive = false;
 
       setProducts(updatedProducts);
-      console.log("aqui");
     }
   };
 
@@ -51,8 +54,8 @@ const ProductList = () => {
           <span>Código</span>
           <span>Preço(R$)</span>
           <span>Categoria</span>
-          <span style={{ width: "100%" }}>Quantidade</span>
-          <span style={{ width: "30%" }}></span>
+          <span>Quantidade</span>
+          <span style={{ width: "40%" }}></span>
         </li>
         {filteredProducts.map((product) => (
           <li key={product.code}>
@@ -68,9 +71,9 @@ const ProductList = () => {
               </Button>
             </div>
             <div>{product.code}</div>
-            <div>{product.price}</div>
+            <div>R$ {product.price}</div>
             <div>{product.category}</div>
-            <div style={{ width: "80%" }}>{product.quantity}</div>
+            <div>{product.quantity}</div>
             <span className="buttons">
               <Button
                 className="button_edit"

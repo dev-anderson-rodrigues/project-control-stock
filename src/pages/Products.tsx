@@ -36,11 +36,6 @@ const Products = () => {
         </div>
         <ProductList />
         {showModal && (
-          // <S.ModalBackdrop>
-          //   <S.ModalContent>
-          //     <ProductForm />
-          //   </S.ModalContent>
-          // </S.ModalBackdrop>
           <Modal>
             <ProductForm />
           </Modal>
