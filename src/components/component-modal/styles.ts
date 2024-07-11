@@ -13,8 +13,12 @@ export const ModalBackdrop = styled.div`
   align-items: center;
 `;
 
-export const ModalContent = styled.div`
-  background: white;
+export const ModalContent = styled.div<{ isDarkMode: boolean }>`
+  background-color: ${(props) =>
+    props.isDarkMode
+      ? props.theme.background.dark
+      : props.theme.background.light};
+  /* background: white; */
   padding: 20px;
   border-radius: 8px;
   max-width: 500px;

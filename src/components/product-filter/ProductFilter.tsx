@@ -26,7 +26,7 @@ const ProductFilter = ({ onFilter }: propsFilter) => {
   };
 
   return (
-    <S.Container>
+    <S.Container isDarkMode={false}>
       <input
         type="text"
         placeholder="Search Name..."

@@ -6,7 +6,7 @@ type propsModal = {
 export const Modal = ({ children }: propsModal) => {
   return (
     <S.ModalBackdrop>
-      <S.ModalContent>{children}</S.ModalContent>
+      <S.ModalContent isDarkMode={false}>{children}</S.ModalContent>
     </S.ModalBackdrop>
   );
 };

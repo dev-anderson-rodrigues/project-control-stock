@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ isDarkMode: boolean }>`
   display: flex;
   justify-content: space-around;
   width: 100%;
   height: 50px;
-  background-color: #4682b4;
-  border: 1px solid;
+  background-color: ${(props) =>
+    props.isDarkMode
+      ? props.theme.background.gray
+      : props.theme.background.blue};
+  /* background-color: #4682b4; */
   border-radius: 4px;
 
   /* input, */
@@ -19,7 +22,11 @@ export const Container = styled.div`
     border: none;
     outline: none;
     color: #fff;
-    background-color: #4682b4;
+    background-color: ${(props) =>
+      props.isDarkMode
+        ? props.theme.background.dark
+        : props.theme.background.blue};
+    /* background-color: #4682b4; */
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
@@ -33,25 +40,38 @@ export const Container = styled.div`
     border: none;
     outline: none;
     color: #fff;
-    background-color: #4682b4;
+    background-color: ${(props) =>
+      props.isDarkMode
+        ? props.theme.background.dark
+        : props.theme.background.blue};
+    /* background-color: #4682b4; */
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
   }
   button {
     width: 100%;
+    margin: 5px;
     border-radius: 4px;
     border: none;
     outline: none;
     color: #fff;
-    background-color: #ff6347;
+    background-color: ${(props) =>
+      props.isDarkMode
+        ? props.theme.background.gray
+        : props.theme.background.orange};
+    /* background-color: #ff6347; */
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
 
     &:hover {
-      background-color: #ff4500;
-      transition: background-color 0.3s ease-in-out;
+      background-color: ${(props) =>
+        props.isDarkMode
+          ? props.theme.background.dark
+          : props.theme.background.orangeSecondary};
+      /* background-color: #ff4500; */
+      transition: background-color 0.5s ease-in-out;
     }
   }
 `;

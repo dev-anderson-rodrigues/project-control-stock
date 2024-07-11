@@ -22,7 +22,7 @@ const Products = () => {
 
   return (
     <>
-      <S.Container>
+      <S.Container isDarkMode={false}>
         <div className="container_h3">
           <h3>Controle de Produtos</h3>
         </div>

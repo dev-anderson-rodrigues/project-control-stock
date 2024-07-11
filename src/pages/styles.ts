@@ -1,27 +1,38 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ isDarkMode: boolean }>`
   display: flex;
   gap: 15px;
   flex-direction: column;
   align-items: start;
-  background-color: #ffff;
+  background-color: ${(props) =>
+    props.isDarkMode ? props.theme.background.dark : ""};
+  /* background-color: #ffff; */
   width: 100vw;
   max-width: 1280px;
 
   .container_h3 {
-    background-color: #4682b4;
+    background-color: ${(props) =>
+      props.isDarkMode
+        ? props.theme.background.gray
+        : props.theme.background.blue};
+    /* background-color: #4682b4; */
     width: 100%;
     height: 40px;
     display: flex;
     align-items: center;
 
     h3 {
+      background-color: ${(props) =>
+        props.isDarkMode
+          ? props.theme.background.gray
+          : props.theme.background.blue};
+      color: ${(props) => props.theme.color.textColorWhite};
+      /* color: #fff; */
       width: 100%;
       justify-content: left;
       font-family: "Poppins", sans-serif;
       align-items: center;
-      color: #fff;
       font-size: 16px;
       font-weight: bold;
       padding-left: 20px;
@@ -37,13 +48,25 @@ export const Container = styled.div`
     gap: 5px;
 
     .b_cadastrar {
-      background-color: #4682b4;
+      background-color: ${(props) =>
+        props.isDarkMode
+          ? props.theme.background.gray
+          : props.theme.background.blue};
+      /* background-color: #4682b4; */
     }
     .b_entrada {
-      background-color: #48d1cc;
+      background-color: ${(props) =>
+        props.isDarkMode
+          ? props.theme.background.gray
+          : props.theme.background.blueSecondary};
+      /* background-color: #48d1cc; */
     }
     .b_saida {
-      background-color: #dc143c;
+      background-color: ${(props) =>
+        props.isDarkMode
+          ? props.theme.background.gray
+          : props.theme.background.red};
+      /* background-color: #dc143c; */
     }
     button {
       padding: 1em;

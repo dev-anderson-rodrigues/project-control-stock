@@ -43,8 +43,9 @@ const ProductList = () => {
   const handleFilter = (filtered: Product[]) => {
     setFilteredProducts(filtered);
   };
+
   return (
-    <S.Container>
+    <S.Container isDarkMode={false}>
       <div>
         <ProductFilter onFilter={handleFilter} />
       </div>
@@ -96,7 +97,7 @@ const ProductList = () => {
 
       {modalDetails && (
         <Modal>
-          <S.ContainerDetails>
+          <S.ContainerDetails isDarkMode={false}>
             <div>
               <Button
                 onClick={() => {
