@@ -3,8 +3,10 @@ import Button from "../Button";
 import { Product, useProducts } from "../../context/productsContext";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
+import { useTheme } from "../../context/themeContext";
 
 const ProductForm = () => {
+  const { isDarkMode } = useTheme();
   const {
     register,
     handleSubmit,
@@ -53,6 +55,7 @@ const ProductForm = () => {
   };
   return (
     <S.Form
+      isDarkMode={isDarkMode}
       onSubmit={handleSubmit(onSubmit)}
       hasError={!!Object.keys(errors).length}
     >
@@ -207,7 +210,7 @@ const ProductForm = () => {
           type="submit"
           disabled={(!isValid && exist) || isSubmitting}
           style={{
-            backgroundColor: isValid && !isSubmitting ? "#007bff" : "#cccccc",
+            backgroundColor: isValid && !isSubmitting ? "" : "#cccccc",
           }}
         >
           {exist ? "Atualizar" : "Cadastrar"}
@@ -218,7 +221,8 @@ const ProductForm = () => {
             setSending(false);
             setShowSuccessMessage(false);
           }}
-          style={{ backgroundColor: "red" }}
+          style={{ backgroundColor: isDarkMode ? "#ABB2BF" : "red" }}
+          className="button_cancel"
         >
           Cancelar
         </Button>

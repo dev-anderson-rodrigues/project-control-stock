@@ -5,15 +5,9 @@ export const Container = styled.div<{ isDarkMode: boolean }>`
   justify-content: space-around;
   width: 100%;
   height: 50px;
-  background-color: ${(props) =>
-    props.isDarkMode
-      ? props.theme.background.gray
-      : props.theme.background.blue};
-  /* background-color: #4682b4; */
+  background-color: ${(props) => (props.isDarkMode ? "#ABB2BF" : "#1e90ff")};
   border-radius: 4px;
 
-  /* input, */
-  /* button, */
   input {
     width: 100%;
     padding: 5px;
@@ -22,11 +16,7 @@ export const Container = styled.div<{ isDarkMode: boolean }>`
     border: none;
     outline: none;
     color: #fff;
-    background-color: ${(props) =>
-      props.isDarkMode
-        ? props.theme.background.dark
-        : props.theme.background.blue};
-    /* background-color: #4682b4; */
+    background-color: ${(props) => (props.isDarkMode ? "#282C33" : "#1e90ff")};
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
@@ -40,11 +30,7 @@ export const Container = styled.div<{ isDarkMode: boolean }>`
     border: none;
     outline: none;
     color: #fff;
-    background-color: ${(props) =>
-      props.isDarkMode
-        ? props.theme.background.dark
-        : props.theme.background.blue};
-    /* background-color: #4682b4; */
+    background-color: ${(props) => (props.isDarkMode ? "#282C33" : "#1e90ff")};
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
@@ -56,21 +42,14 @@ export const Container = styled.div<{ isDarkMode: boolean }>`
     border: none;
     outline: none;
     color: #fff;
-    background-color: ${(props) =>
-      props.isDarkMode
-        ? props.theme.background.gray
-        : props.theme.background.orange};
-    /* background-color: #ff6347; */
+    background-color: ${(props) => (props.isDarkMode ? "#ABB2BF" : "#ff6347")};
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
 
     &:hover {
       background-color: ${(props) =>
-        props.isDarkMode
-          ? props.theme.background.dark
-          : props.theme.background.orangeSecondary};
-      /* background-color: #ff4500; */
+        props.isDarkMode ? "#282C33" : "#ff4500"};
       transition: background-color 0.5s ease-in-out;
     }
   }

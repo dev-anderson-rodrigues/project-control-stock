@@ -5,8 +5,10 @@ import ProductForm from "../components/product-form/ProductForm";
 import { useProducts } from "../context/productsContext";
 
 import Modal from "../components/component-modal/Modal";
+import { useTheme } from "../context/themeContext";
 
 const Products = () => {
+  const { isDarkMode } = useTheme();
   const {
     showModal,
     setExist,
@@ -22,7 +24,7 @@ const Products = () => {
 
   return (
     <>
-      <S.Container isDarkMode={false}>
+      <S.Container isDarkMode={isDarkMode}>
         <div className="container_h3">
           <h3>Controle de Produtos</h3>
         </div>

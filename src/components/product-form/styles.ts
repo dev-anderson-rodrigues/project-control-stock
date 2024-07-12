@@ -14,7 +14,7 @@ export const ContainerModal = styled.div`
   z-index: 10000;
 `;
 
-export const Form = styled.form<{ hasError?: boolean }>`
+export const Form = styled.form<{ hasError?: boolean; isDarkMode: boolean }>`
   display: flex;
   gap: 15px;
   flex-direction: column;
@@ -24,7 +24,7 @@ export const Form = styled.form<{ hasError?: boolean }>`
   max-width: 500px;
   height: 80%;
   padding: 20px;
-  background-color: #fff;
+  background-color: ${(props) => (props.isDarkMode ? "#282C33" : "#fff")};
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
   div,
@@ -32,7 +32,7 @@ export const Form = styled.form<{ hasError?: boolean }>`
     font-weight: bold;
     width: 100%;
     font-size: 16px;
-    color: #000;
+    color: ${(props) => (props.isDarkMode ? "#fff" : "#000")};
     gap: 5px;
     display: flex;
     align-items: start;
@@ -45,7 +45,7 @@ export const Form = styled.form<{ hasError?: boolean }>`
       height: 30px;
       border-radius: 5px;
       border: 2px solid ${(props) => (props.hasError ? "red" : "#87ceeb")};
-      background-color: #fff;
+      background-color: ${(props) => (props.isDarkMode ? "#ABB2BF" : "#fff")};
       font-size: 16px;
       font-weight: bold;
       color: #000;
@@ -61,7 +61,8 @@ export const Form = styled.form<{ hasError?: boolean }>`
       padding: 1em;
       color: #fff;
       font-weight: 600;
-      background-color: #87ceeb;
+      background-color: ${(props) =>
+        props.isDarkMode ? "#ABB2BF" : "#007bff"};
       font-family: "Poppins", sans-serif;
       border: none;
       border-radius: 5px;

@@ -1,15 +1,15 @@
-import { ReactNode, createContext, useContext } from "react";
-import { theme } from "../styles/theme";
+import { ReactNode, createContext, useContext, useState } from "react";
 
 type ThemeContextType = {
-  theme: typeof theme;
-  children: ReactNode;
+  isDarkMode: boolean;
+  setIsDarkMode: (isDarkMode: boolean) => void;
 };
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-const ThemeProvider = ({ children, theme }: ThemeContextType) => {
+const ThemeProvider = ({ children }: { children: ReactNode }) => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
   return (
-    <ThemeContext.Provider value={{ theme, children }}>
+    <ThemeContext.Provider value={{ isDarkMode, setIsDarkMode }}>
       {children}
     </ThemeContext.Provider>
   );

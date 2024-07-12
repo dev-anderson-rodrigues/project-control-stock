@@ -1,19 +1,19 @@
 import { Route, Routes } from "react-router-dom";
-// import "./App.css";
 import Products from "./pages/Products";
 import GlobalStyle from "./styles/StyleGlobal";
-import { ThemeProvider } from "styled-components";
-import { theme } from "./styles/theme";
+import { useTheme } from "./context/themeContext";
+import { ToggleButtonTheme } from "./components/toogle-theme/ToogleTheme";
 
 function App() {
+  const { isDarkMode } = useTheme();
+
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle isDarkMode={false} />
-        <Routes>
-          <Route path="/" element={<Products />} />
-        </Routes>
-      </ThemeProvider>
+      <GlobalStyle isDarkMode={isDarkMode} />
+      <ToggleButtonTheme />
+      <Routes>
+        <Route path="/" element={<Products />} />
+      </Routes>
     </>
   );
 }

@@ -4,11 +4,7 @@ export const Container = styled.div<{ isDarkMode: boolean }>`
   border: 2px solid #87ceeb;
   width: 100%;
   height: 100%;
-  background-color: ${(props) =>
-    props.isDarkMode
-      ? props.theme.background.gray
-      : props.theme.background.light};
-  /* background-color: #fff; */
+  background-color: ${(props) => (props.isDarkMode ? "#ABB2BF" : "#F5F5F5")};
   padding: 10px;
 
   ul li {
@@ -30,11 +26,7 @@ export const Container = styled.div<{ isDarkMode: boolean }>`
       align-items: center;
       font-size: 18px;
       font-weight: bold;
-      color: ${(props) =>
-        props.isDarkMode
-          ? props.theme.color.textColorWhite
-          : props.theme.color.textColorPrimary};
-      /* color: #1e90ff; */
+      color: ${(props) => (props.isDarkMode ? "#fff" : "#1e90ff")};
       font-family: "Poppins", sans-serif;
     }
 
@@ -48,11 +40,7 @@ export const Container = styled.div<{ isDarkMode: boolean }>`
         height: 100%;
         background: none;
         border: none;
-        color: ${(props) =>
-          props.isDarkMode
-            ? props.theme.color.textColorWhite
-            : props.theme.color.textColorPrimary};
-        /* color: #1e90ff; */
+        color: ${(props) => (props.isDarkMode ? "#fff" : "#1e90ff")};
         cursor: pointer;
         display: flex;
         font-weight: 600;
@@ -79,13 +67,8 @@ export const Container = styled.div<{ isDarkMode: boolean }>`
         text-align: center;
         height: 100%;
         border-radius: 5px;
-        /* background: none; */
         border: none;
-        color: ${(props) =>
-          props.isDarkMode
-            ? props.theme.color.textColorWhite
-            : props.theme.color.textColorPrimary};
-        /* color: #1e90ff; */
+        color: ${(props) => (props.isDarkMode ? "#fff" : "#1e90ff")};
         cursor: pointer;
         font-family: "Poppins", sans-serif;
         display: flex;
@@ -97,10 +80,7 @@ export const Container = styled.div<{ isDarkMode: boolean }>`
           transition: all 0.5s ease-in-out;
           color: #fff;
           background-color: ${(props) =>
-            props.isDarkMode
-              ? props.theme.background.gray
-              : props.theme.background.blue};
-          /* background-color: #1e90ff; */
+            props.isDarkMode ? "#ABB2BF" : "#1e90ff"};
         }
       }
     }
@@ -113,6 +93,7 @@ export const ContainerDetails = styled.div<{ isDarkMode: boolean }>`
   height: 100%;
 
   h2 {
+    color: ${(props) => (props.isDarkMode ? "#ABB2BF" : "")};
     padding: 10px;
 
     span {
@@ -120,11 +101,7 @@ export const ContainerDetails = styled.div<{ isDarkMode: boolean }>`
       font-weight: bold;
       font-size: 18px;
       flex-wrap: wrap;
-      color: ${(props) =>
-        props.isDarkMode
-          ? props.theme.color.textColorWhite
-          : props.theme.color.textColorPrimary};
-      // color: #1e90ff;
+      color: ${(props) => (props.isDarkMode ? "#fff" : "#1e90ff")};
       font-family: "Poppins", sans-serif;
     }
   }
@@ -144,10 +121,7 @@ export const ContainerDetails = styled.div<{ isDarkMode: boolean }>`
       border: none;
       color: #fff;
       background-color: ${(props) =>
-        props.isDarkMode
-          ? props.theme.background.gray
-          : props.theme.background.blue};
-      /* background-color: #1e90ff; */
+        props.isDarkMode ? "#ABB2BF" : "#1e90ff"};
       cursor: pointer;
       font-family: "Poppins", sans-serif;
       display: flex;

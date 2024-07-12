@@ -14,11 +14,7 @@ export const ModalBackdrop = styled.div`
 `;
 
 export const ModalContent = styled.div<{ isDarkMode: boolean }>`
-  background-color: ${(props) =>
-    props.isDarkMode
-      ? props.theme.background.dark
-      : props.theme.background.light};
-  /* background: white; */
+  background-color: ${(props) => (props.isDarkMode ? "#282C33" : "#F5F5F5")};
   padding: 20px;
   border-radius: 8px;
   max-width: 500px;

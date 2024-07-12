@@ -4,8 +4,10 @@ import Button from "../Button";
 import ProductFilter from "../product-filter/ProductFilter";
 import { useEffect, useState } from "react";
 import Modal from "../component-modal/Modal";
+import { useTheme } from "../../context/themeContext";
 
 const ProductList = () => {
+  const { isDarkMode } = useTheme();
   const {
     products,
     setProducts,
@@ -45,7 +47,7 @@ const ProductList = () => {
   };
 
   return (
-    <S.Container isDarkMode={false}>
+    <S.Container isDarkMode={isDarkMode}>
       <div>
         <ProductFilter onFilter={handleFilter} />
       </div>
@@ -97,7 +99,7 @@ const ProductList = () => {
 
       {modalDetails && (
         <Modal>
-          <S.ContainerDetails isDarkMode={false}>
+          <S.ContainerDetails isDarkMode={isDarkMode}>
             <div>
               <Button
                 onClick={() => {

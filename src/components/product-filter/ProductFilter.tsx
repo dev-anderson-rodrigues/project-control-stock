@@ -2,11 +2,13 @@ import { useState } from "react";
 import { Product, useProducts } from "../../context/productsContext";
 import Button from "../Button";
 import * as S from "./styles";
+import { useTheme } from "../../context/themeContext";
 
 type propsFilter = {
   onFilter: (filter: Product[]) => void;
 };
 const ProductFilter = ({ onFilter }: propsFilter) => {
+  const { isDarkMode } = useTheme();
   const { products } = useProducts();
   const activeProducts = products.filter((product) => product.isActive);
 
@@ -26,7 +28,7 @@ const ProductFilter = ({ onFilter }: propsFilter) => {
   };
 
   return (
-    <S.Container isDarkMode={false}>
+    <S.Container isDarkMode={isDarkMode}>
       <input
         type="text"
         placeholder="Search Name..."

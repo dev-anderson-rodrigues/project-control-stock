@@ -5,18 +5,12 @@ export const Container = styled.div<{ isDarkMode: boolean }>`
   gap: 15px;
   flex-direction: column;
   align-items: start;
-  background-color: ${(props) =>
-    props.isDarkMode ? props.theme.background.dark : ""};
-  /* background-color: #ffff; */
+  background-color: ${(props) => (props.isDarkMode ? "#282C33" : "#F5F5F5")};
   width: 100vw;
   max-width: 1280px;
 
   .container_h3 {
-    background-color: ${(props) =>
-      props.isDarkMode
-        ? props.theme.background.gray
-        : props.theme.background.blue};
-    /* background-color: #4682b4; */
+    background-color: ${(props) => (props.isDarkMode ? "#ABB2BF" : "#1e90ff")};
     width: 100%;
     height: 40px;
     display: flex;
@@ -24,11 +18,8 @@ export const Container = styled.div<{ isDarkMode: boolean }>`
 
     h3 {
       background-color: ${(props) =>
-        props.isDarkMode
-          ? props.theme.background.gray
-          : props.theme.background.blue};
-      color: ${(props) => props.theme.color.textColorWhite};
-      /* color: #fff; */
+        props.isDarkMode ? "#ABB2BF" : "#1e90ff"};
+      color: #fff;
       width: 100%;
       justify-content: left;
       font-family: "Poppins", sans-serif;
@@ -49,24 +40,15 @@ export const Container = styled.div<{ isDarkMode: boolean }>`
 
     .b_cadastrar {
       background-color: ${(props) =>
-        props.isDarkMode
-          ? props.theme.background.gray
-          : props.theme.background.blue};
-      /* background-color: #4682b4; */
+        props.isDarkMode ? "#ABB2BF" : "#1e90ff"};
     }
     .b_entrada {
       background-color: ${(props) =>
-        props.isDarkMode
-          ? props.theme.background.gray
-          : props.theme.background.blueSecondary};
-      /* background-color: #48d1cc; */
+        props.isDarkMode ? "#ABB2BF" : "#48d1cc"};
     }
     .b_saida {
       background-color: ${(props) =>
-        props.isDarkMode
-          ? props.theme.background.gray
-          : props.theme.background.red};
-      /* background-color: #dc143c; */
+        props.isDarkMode ? "#ABB2BF" : "#dc143c"};
     }
     button {
       padding: 1em;
