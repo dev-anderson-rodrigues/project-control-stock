@@ -47,7 +47,7 @@ export const Form = styled.form<{ hasError?: boolean; isDarkMode: boolean }>`
       background-color: ${(props) => (props.isDarkMode ? "#ABB2BF" : "#fff")};
       font-size: 14px;
       font-weight: bold;
-      color: #000;
+      color: ${(props) => (props.isDarkMode ? "#fff" : "#000")};
       padding-left: 10px;
       outline: none;
     }

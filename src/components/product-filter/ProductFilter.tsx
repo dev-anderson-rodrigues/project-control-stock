@@ -48,8 +48,7 @@ const ProductFilter = ({ onFilter }: propsFilter) => {
         <option value="">Filter by category</option>
         <option value="comida">Comida</option>
         <option value="bebida">Bebida</option>
-        <option value="lanche">Lanche</option>
-        <option value="combo">Combo</option>
+        <option value="Não comestível">Não comestível</option>
       </select>
       <Button onClick={handleFilter}>Search</Button>
     </S.Container>

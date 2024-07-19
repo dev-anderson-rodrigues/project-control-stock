@@ -41,7 +41,7 @@ const ProductForm = () => {
     };
 
     handleSending();
-  }, [sending, setSending, setShowModal]);
+  }, [sending, setSending, setShowModal, showSuccessMessage]);
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
