@@ -1,25 +1,19 @@
 import * as S from "./styles";
-import Button from "../components/Button";
-import ProductList from "../components/product-list/ProductList";
-import ProductForm from "../components/product-form/ProductForm";
-import { useProducts } from "../context/productsContext";
-
-import Modal from "../components/component-modal/Modal";
-import { useTheme } from "../context/themeContext";
+import Button from "../../components/Button";
+import ProductList from "../../components/product-list/ProductList";
+import { useProducts } from "../../context/productsContext";
+import { useTheme } from "../../context/themeContext";
+import { useNavigate } from "react-router-dom";
 
 const Products = () => {
   const { isDarkMode } = useTheme();
-  const {
-    showModal,
-    setExist,
-    setShowModal,
-    setCurrentProduct,
-  } = useProducts();
+  const { setCurrentProduct, setExist } = useProducts();
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setCurrentProduct(null);
-    setShowModal(!showModal);
     setExist(false);
+    navigate("/createProducts");
   };
 
   return (
@@ -37,11 +31,6 @@ const Products = () => {
           <Button className="b_saida">Saida</Button>
         </div>
         <ProductList />
-        {showModal && (
-          <Modal>
-            <ProductForm />
-          </Modal>
-        )}
       </S.Container>
     </>
   );

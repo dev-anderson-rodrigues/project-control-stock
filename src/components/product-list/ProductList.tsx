@@ -5,13 +5,14 @@ import ProductFilter from "../product-filter/ProductFilter";
 import { useEffect, useState } from "react";
 import Modal from "../component-modal/Modal";
 import { useTheme } from "../../context/themeContext";
+import { useNavigate } from "react-router-dom";
 
 const ProductList = () => {
+  const navigate = useNavigate();
   const { isDarkMode } = useTheme();
   const {
     products,
     setProducts,
-    setShowModal,
     setExist,
     currentProduct,
     setCurrentProduct,
@@ -28,7 +29,7 @@ const ProductList = () => {
     if (product) {
       setCurrentProduct(product);
       setExist(true);
-      setShowModal(true);
+      navigate(`/products/${code}`);
     }
   };
   const deleteProduct = (code: number) => {

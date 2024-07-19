@@ -20,8 +20,6 @@ export const Form = styled.form<{ hasError?: boolean; isDarkMode: boolean }>`
   flex-direction: column;
   align-items: start;
   width: 100%;
-  border-radius: 10px;
-  max-width: 500px;
   height: 80%;
   padding: 20px;
   background-color: ${(props) => (props.isDarkMode ? "#282C33" : "#fff")};
@@ -30,7 +28,7 @@ export const Form = styled.form<{ hasError?: boolean; isDarkMode: boolean }>`
   div,
   div label {
     font-weight: bold;
-    width: 100%;
+    width: 90%;
     font-size: 16px;
     color: ${(props) => (props.isDarkMode ? "#fff" : "#000")};
     gap: 5px;
@@ -43,10 +41,11 @@ export const Form = styled.form<{ hasError?: boolean; isDarkMode: boolean }>`
       width: 100%;
       max-width: 100%;
       height: 30px;
+      font-family: "Poppins", sans-serif;
       border-radius: 5px;
       border: 2px solid ${(props) => (props.hasError ? "red" : "#87ceeb")};
       background-color: ${(props) => (props.isDarkMode ? "#ABB2BF" : "#fff")};
-      font-size: 16px;
+      font-size: 14px;
       font-weight: bold;
       color: #000;
       padding-left: 10px;
@@ -84,6 +83,13 @@ export const Form = styled.form<{ hasError?: boolean; isDarkMode: boolean }>`
       width: 50%;
       display: flex;
       align-items: center;
+    }
+    .group_status {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      font-size: 25px;
+      color: ${(props) => (props.isDarkMode ? "#fff" : "#000")};
     }
   }
 `;

@@ -19,7 +19,6 @@ const ProductForm = () => {
     onSubmit,
     currentProduct,
     setShowModal,
-    showModal,
     sending,
     setSending,
   } = useProducts();
@@ -60,11 +59,10 @@ const ProductForm = () => {
       hasError={!!Object.keys(errors).length}
     >
       <div>
-        {exist ? <h2>Atualizar Produto</h2> : <h2>Cadastrar Produto</h2>}
+        <h2>Código do produto</h2>
       </div>
       <div>
         <label htmlFor="code" className="labelCode">
-          Código do produto
           <input
             type="text"
             id="code"
@@ -192,18 +190,22 @@ const ProductForm = () => {
             <p className="p_errors">{errors.description.message}</p>
           )}
         </label>
-        {sending && !showSuccessMessage && <p>Enviando....</p>}
+        {sending && !showSuccessMessage && (
+          <p className="group_status">Enviando....</p>
+        )}
         {showSuccessMessage && exist && (
-          <p>Produto atualizado com sucesso...</p>
+          <p className="group_status">Produto atualizado com sucesso...</p>
         )}
         {showSuccessMessage && !exist && (
-          <p>Produto cadastrado com sucesso...</p>
+          <p className="group_status">Produto cadastrado com sucesso...</p>
         )}
       </div>
       <div
+        className="button_group"
         style={{
           display: "flex",
           flexDirection: "row",
+          width: "40%",
         }}
       >
         <Button
@@ -217,7 +219,6 @@ const ProductForm = () => {
         </Button>
         <Button
           onClick={() => {
-            setShowModal(!showModal);
             setSending(false);
             setShowSuccessMessage(false);
           }}
