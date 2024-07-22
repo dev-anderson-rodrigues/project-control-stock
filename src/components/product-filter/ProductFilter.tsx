@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Product, useProducts } from "../../context/productsContext";
 import Button from "../Button";
 import * as S from "./styles";
@@ -9,15 +9,24 @@ type propsFilter = {
 };
 const ProductFilter = ({ onFilter }: propsFilter) => {
   const { isDarkMode } = useTheme();
-  const { products } = useProducts();
-  const activeProducts = products.filter((product) => product.isActive);
-
+  const { products, page } = useProducts();
   const [searchName, setSearchName] = useState("");
   const [searchCode, setSearchCode] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("");
 
+  useEffect(() => {
+    if (page === "entries") setFilteredProducts(products);
+    if (page === "outputs")
+      setFilteredProducts(
+        products.filter((product) => product.isActive === false)
+      );
+    if (page === "")
+      setFilteredProducts(products.filter((product) => product.isActive));
+  }, [page, products]);
+
   const handleFilter = () => {
-    const filtered = activeProducts.filter((product) => {
+    const filtered = filteredProducts.filter((product) => {
       return (
         product.name.toLowerCase().includes(searchName.toLowerCase()) &&
         (selectedCategory === "" || product.category === selectedCategory) &&
