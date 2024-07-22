@@ -52,6 +52,16 @@ const ProductForm = () => {
       setWarningMessage(false);
     }
   };
+
+  const toCamelCase = (str: string): string => {
+    return str
+      .toLowerCase()
+      .replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) =>
+        index === 0 ? match.toLowerCase() : match.toUpperCase()
+      )
+      .replace(/\s+/g, "");
+  };
+
   return (
     <S.Form
       isDarkMode={isDarkMode}
@@ -123,6 +133,14 @@ const ProductForm = () => {
             {...register("category", {
               required: "Categoria é obrigatória",
               min: 1,
+              validate: (value) => {
+                const camelCaseValue = toCamelCase(value);
+                return camelCaseValue === "comida" ||
+                  camelCaseValue === "bebida" ||
+                  camelCaseValue === "naoComestivel"
+                  ? true
+                  : 'Categoria inválida, recomendamos utilizar "Comida", "Bebida" ou "Nao Comestivel"';
+              },
             })}
           />
           {errors.category && (
