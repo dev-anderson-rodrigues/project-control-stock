@@ -1,6 +1,5 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 import { SubmitHandler } from "react-hook-form";
-
 export interface Product {
   code: number;
   name: string;
@@ -17,6 +16,8 @@ interface ProductsContextType {
   showModal: boolean;
   setShowModal: (value: boolean) => void;
   exist: boolean;
+  page: string;
+  setPage: React.Dispatch<React.SetStateAction<string>>;
   sending: boolean;
   setSending: React.Dispatch<React.SetStateAction<boolean>>;
   setExist: React.Dispatch<React.SetStateAction<boolean>>;
@@ -31,6 +32,7 @@ const ProductsContext = createContext<ProductsContextType | undefined>(
 const ProductsProvider = ({ children }: { children: ReactNode }) => {
   const [showModal, setShowModal] = useState(false);
   const [exist, setExist] = useState(false);
+  const [page, setPage] = useState("");
   const [sending, setSending] = useState(false);
   const [currentProduct, setCurrentProduct] = useState<Product | null>(null);
   const [products, setProducts] = useState<Product[]>([
@@ -68,6 +70,8 @@ const ProductsProvider = ({ children }: { children: ReactNode }) => {
     }
     setSending(true);
   };
+
+  console.log(page);
   return (
     <ProductsContext.Provider
       value={{
@@ -79,6 +83,8 @@ const ProductsProvider = ({ children }: { children: ReactNode }) => {
         setShowModal,
         exist,
         setExist,
+        page,
+        setPage,
         onSubmit,
         currentProduct,
         setCurrentProduct,

@@ -6,7 +6,7 @@ import * as S from "./styles";
 
 const CreateProducts = () => {
   const { isDarkMode } = useTheme();
-  const { exist } = useProducts();
+  const { exist, setPage } = useProducts();
 
   return (
     <>
@@ -18,22 +18,28 @@ const CreateProducts = () => {
           <div className="menu_left">
             <ul>
               <li>
-                <Link to="/">
+                <Link to="/" onClick={() => setPage(() => "")}>
                   <h3>Home</h3>
                 </Link>
               </li>
               <li>
-                <Link to="/">
+                <Link to="/" onClick={() => setPage(() => "")}>
                   <h3>Controle de Produtos</h3>
                 </Link>
               </li>
               <li>
-                <Link to="/entries">
+                <Link
+                  to="/products/entries"
+                  onClick={() => setPage(() => "entries")}
+                >
                   <h3>Entradas</h3>
                 </Link>
               </li>
               <li>
-                <Link to="/outputs">
+                <Link
+                  to="/products/outputs"
+                  onClick={() => setPage(() => "outputs")}
+                >
                   <h3>Saídas</h3>
                 </Link>
               </li>

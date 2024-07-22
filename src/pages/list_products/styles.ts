@@ -7,6 +7,8 @@ export const Container = styled.div<{ isDarkMode: boolean }>`
   align-items: start;
   background-color: ${(props) => (props.isDarkMode ? "#282C33" : "#F5F5F5")};
   width: 100vw;
+  padding-left: 5px;
+  padding-right: 5px;
   max-width: 1280px;
 
   .container_h3 {
@@ -49,6 +51,10 @@ export const Container = styled.div<{ isDarkMode: boolean }>`
     .b_saida {
       background-color: ${(props) =>
         props.isDarkMode ? "#ABB2BF" : "#dc143c"};
+    }
+    .b_voltar {
+      background-color: ${(props) =>
+        props.isDarkMode ? "#ABB2BF" : "#1e90ff"};
     }
     button {
       padding: 1em;

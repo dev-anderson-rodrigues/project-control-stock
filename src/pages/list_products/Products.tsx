@@ -7,13 +7,22 @@ import { useNavigate } from "react-router-dom";
 
 const Products = () => {
   const { isDarkMode } = useTheme();
-  const { setCurrentProduct, setExist } = useProducts();
+  const { setCurrentProduct, setExist, setPage, page } = useProducts();
   const navigate = useNavigate();
 
   const handleClick = () => {
     setCurrentProduct(null);
     setExist(false);
     navigate("/createProducts");
+  };
+  const handleClickPageEntries = () => {
+    navigate("/products/entries");
+    setPage(() => "entries");
+  };
+
+  const handleClickPageOutputs = () => {
+    navigate("/products/outputs");
+    setPage(() => "outputs");
   };
 
   return (
@@ -24,11 +33,27 @@ const Products = () => {
         </div>
 
         <div className="container_Buttons">
-          <Button className="b_cadastrar" onClick={handleClick}>
-            Cadastrar produto
+          {page === "entries" || page === "outputs" ? (
+            <Button
+              className="b_voltar"
+              onClick={() => {
+                navigate("/");
+                setPage(() => "");
+              }}
+            >
+              Voltar
+            </Button>
+          ) : (
+            <Button className="b_cadastrar" onClick={handleClick}>
+              Cadastrar produto
+            </Button>
+          )}
+          <Button className="b_entrada" onClick={handleClickPageEntries}>
+            Entrada
           </Button>
-          <Button className="b_entrada">Entrada</Button>
-          <Button className="b_saida">Saida</Button>
+          <Button className="b_saida" onClick={handleClickPageOutputs}>
+            Saida
+          </Button>
         </div>
         <ProductList />
       </S.Container>

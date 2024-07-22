@@ -13,6 +13,7 @@ const ProductList = () => {
   const {
     products,
     setProducts,
+    page,
     setExist,
     currentProduct,
     setCurrentProduct,
@@ -21,8 +22,14 @@ const ProductList = () => {
   const [modalDetails, setModalDetails] = useState<boolean>(false);
 
   useEffect(() => {
-    setFilteredProducts(products.filter((product) => product.isActive));
-  }, [products]);
+    if (page === "entries") setFilteredProducts(products);
+    if (page === "outputs")
+      setFilteredProducts(
+        products.filter((product) => product.isActive === false)
+      );
+    if (page === "")
+      setFilteredProducts(products.filter((product) => product.isActive));
+  }, [page, products]);
 
   const getByIdProduct = (code: number) => {
     const product = products.find((p) => p.code === code);
@@ -39,6 +46,18 @@ const ProductList = () => {
 
       updatedProducts[productIndex].isActive = false;
 
+      setProducts(updatedProducts);
+    }
+  };
+
+  const deleteProductPermanent = (code: number) => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this product permanently?"
+    );
+    if (confirmed) {
+      const updatedProducts = products.filter(
+        (product) => product.code !== code
+      );
       setProducts(updatedProducts);
     }
   };
@@ -79,20 +98,30 @@ const ProductList = () => {
             <div>{product.category}</div>
             <div>{product.quantity}</div>
             <span className="buttons">
-              <Button
-                className="button_edit"
-                onClick={() => {
-                  getByIdProduct(product.code);
-                }}
-              >
-                Editar
-              </Button>
-              <Button
-                className="button_delete"
-                onClick={() => deleteProduct(product.code)}
-              >
-                Deletar
-              </Button>
+              {page === "" && (
+                <Button
+                  className="button_edit"
+                  onClick={() => getByIdProduct(product.code)}
+                >
+                  Editar
+                </Button>
+              )}
+              {page === "" && (
+                <Button
+                  className="button_delete"
+                  onClick={() => deleteProduct(product.code)}
+                >
+                  Deletar
+                </Button>
+              )}
+              {page === "outputs" && (
+                <Button
+                  className="button_edit"
+                  onClick={() => deleteProductPermanent(product.code)}
+                >
+                  Deletar
+                </Button>
+              )}
             </span>
           </li>
         ))}
