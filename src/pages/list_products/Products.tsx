@@ -29,7 +29,9 @@ const Products = () => {
     <>
       <S.Container isDarkMode={isDarkMode}>
         <div className="container_h3">
-          <h3>Controle de Produtos</h3>
+          {page === "" && <h3>Controle de Produtos</h3>}
+          {page === "entries" && <h3>Entrada de Produtos</h3>}
+          {page === "outputs" && <h3>Saída de Produtos</h3>}
         </div>
 
         <div className="container_Buttons">
