@@ -37,7 +37,8 @@ export const Form = styled.form<{ hasError?: boolean; isDarkMode: boolean }>`
     flex-direction: column;
 
     input,
-    textarea {
+    textarea,
+    select {
       width: 100%;
       max-width: 100%;
       height: 30px;

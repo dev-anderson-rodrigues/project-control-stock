@@ -53,15 +53,6 @@ const ProductForm = () => {
     }
   };
 
-  const toCamelCase = (str: string): string => {
-    return str
-      .toLowerCase()
-      .replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) =>
-        index === 0 ? match.toLowerCase() : match.toUpperCase()
-      )
-      .replace(/\s+/g, "");
-  };
-
   return (
     <S.Form
       isDarkMode={isDarkMode}
@@ -126,23 +117,29 @@ const ProductForm = () => {
       <div>
         <label htmlFor="category">
           Categoria
-          <input
-            type="text"
-            id="category"
-            placeholder="Categoria"
-            {...register("category", {
-              required: "Categoria é obrigatória",
-              min: 1,
-              validate: (value) => {
-                const camelCaseValue = toCamelCase(value);
-                return camelCaseValue === "comida" ||
-                  camelCaseValue === "bebida" ||
-                  camelCaseValue === "naoComestivel"
-                  ? true
-                  : 'Categoria inválida, recomendamos utilizar "Comida", "Bebida" ou "Nao Comestivel"';
-              },
-            })}
-          />
+          {currentProduct ? (
+            <input
+              type="text"
+              id="category"
+              placeholder="Categoria"
+              {...register("category", {
+                required: "Categoria é obrigatória",
+                min: 1,
+              })}
+            />
+          ) : (
+            <select
+              id="category"
+              {...register("category", {
+                required: "Categoria é obrigatória",
+              })}
+            >
+              <option value="">Selecione uma categoria</option>
+              <option value="comida">Comida</option>
+              <option value="bebida">Bebida</option>
+              <option value="naoComestivel">Não Comestível</option>
+            </select>
+          )}
           {errors.category && (
             <p className="p_errors">{errors.category.message}</p>
           )}
