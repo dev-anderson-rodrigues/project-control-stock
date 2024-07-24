@@ -49,7 +49,7 @@ Esta é uma aplicação web desenvolvida em React para controle de produtos. A a
 
 2. Navegue até o diretório do projeto:
     ```sh
-    cd nome-do-repositorio
+    cd project-control-stock
     ```
 
 3. Instale as dependências:
