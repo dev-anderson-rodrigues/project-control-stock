@@ -4,6 +4,7 @@ import { Product, useProducts } from "../../context/productsContext";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useTheme } from "../../context/themeContext";
+import { useNavigate } from "react-router-dom";
 
 const ProductForm = () => {
   const { isDarkMode } = useTheme();
@@ -22,6 +23,7 @@ const ProductForm = () => {
     sending,
     setSending,
   } = useProducts();
+  const navigate = useNavigate();
   const [warningMessage, setWarningMessage] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
@@ -35,13 +37,14 @@ const ProductForm = () => {
         setTimeout(() => {
           setSending(() => false);
           setShowSuccessMessage(() => true);
+          setTimeout(() => navigate("/"), 1300);
         }, 1000);
       }
       if (showSuccessMessage) setTimeout(() => setShowModal(false), 1000);
     };
 
     handleSending();
-  }, [sending, setSending, setShowModal, showSuccessMessage]);
+  }, [navigate, sending, setSending, setShowModal, showSuccessMessage]);
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -117,29 +120,20 @@ const ProductForm = () => {
       <div>
         <label htmlFor="category">
           Categoria
-          {currentProduct ? (
-            <input
-              type="text"
-              id="category"
-              placeholder="Categoria"
-              {...register("category", {
-                required: "Categoria é obrigatória",
-                min: 1,
-              })}
-            />
-          ) : (
-            <select
-              id="category"
-              {...register("category", {
-                required: "Categoria é obrigatória",
-              })}
-            >
-              <option value="">Selecione uma categoria</option>
-              <option value="comida">Comida</option>
-              <option value="bebida">Bebida</option>
-              <option value="naoComestivel">Não Comestível</option>
-            </select>
-          )}
+          <select
+            id="category"
+            {...register("category", {
+              required: "Categoria é obrigatória",
+              setValueAs: (value) => {
+                return value;
+              },
+            })}
+          >
+            <option value="">Selecione uma categoria</option>
+            <option value="Comida">Comida</option>
+            <option value="Bebida">Bebida</option>
+            <option value="Não Comestível">Não Comestível</option>
+          </select>
           {errors.category && (
             <p className="p_errors">{errors.category.message}</p>
           )}
@@ -236,6 +230,7 @@ const ProductForm = () => {
           onClick={() => {
             setSending(false);
             setShowSuccessMessage(false);
+            navigate("/");
           }}
           style={{ backgroundColor: isDarkMode ? "#ABB2BF" : "red" }}
           className="button_cancel"

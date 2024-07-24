@@ -40,8 +40,8 @@ const ProductsProvider = ({ children }: { children: ReactNode }) => {
       code: 123,
       name: "Produto 1",
       description: "Descrição do produto 1",
-      price: 100,
-      category: "Categoria 1",
+      price: 100.0,
+      category: "Comida",
       isActive: true,
       quantity: 10,
     },
@@ -71,7 +71,6 @@ const ProductsProvider = ({ children }: { children: ReactNode }) => {
     setSending(true);
   };
 
-  console.log(page);
   return (
     <ProductsContext.Provider
       value={{
