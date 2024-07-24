@@ -24,13 +24,13 @@ Esta é uma aplicação web desenvolvida em React para controle de produtos. A a
 ## Exemplos de Imagens
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/767d72a8-cc3b-4847-8fc2-e860b307e0de" width="200" alt="Primeira Imagem">
-  <img src="https://github.com/user-attachments/assets/b4073951-1ddc-4780-ae05-77b6bbea0bb3" width="200" alt="Segunda Imagem">
-  <img src="https://github.com/user-attachments/assets/8fe1dcce-c9ac-47bd-b955-61849d812996" width="200" alt="Terceira Imagem">
-  <img src="https://github.com/user-attachments/assets/2e50b06f-e32c-446e-b37b-810f9f5fa90b" width="200" alt="Quarta Imagem">
-  <img src="https://github.com/user-attachments/assets/43adae29-236a-425a-81e8-33d0aa03ee2d" width="200" alt="Quinta Imagem">
-  <img src="https://github.com/user-attachments/assets/7aa28e51-083a-4a11-92d8-1c452dd83a92" width="200" alt="Sexta Imagem">
-  <img src="https://github.com/user-attachments/assets/fccb3325-0362-4654-a12f-0a5de92a0b1d" width="200" alt="Sétima Imagem">
+  <img src="https://github.com/user-attachments/assets/767d72a8-cc3b-4847-8fc2-e860b307e0de" width="400" alt="Primeira Imagem">
+  <img src="https://github.com/user-attachments/assets/b4073951-1ddc-4780-ae05-77b6bbea0bb3" width="400" alt="Segunda Imagem">
+  <img src="https://github.com/user-attachments/assets/8fe1dcce-c9ac-47bd-b955-61849d812996" width="400" alt="Terceira Imagem">
+  <img src="https://github.com/user-attachments/assets/2e50b06f-e32c-446e-b37b-810f9f5fa90b" width="400" alt="Quarta Imagem">
+  <img src="https://github.com/user-attachments/assets/43adae29-236a-425a-81e8-33d0aa03ee2d" width="400" alt="Quinta Imagem">
+  <img src="https://github.com/user-attachments/assets/7aa28e51-083a-4a11-92d8-1c452dd83a92" width="400" alt="Sexta Imagem">
+  <img src="https://github.com/user-attachments/assets/fccb3325-0362-4654-a12f-0a5de92a0b1d" width="400" alt="Sétima Imagem">
 </p>
 
 ## Como Rodar a Aplicação
