@@ -1,7 +1,4 @@
-<h1 align="center" style="color:#7f5cd1; font-size:45px;">
-  ![image](https://github.com/user-attachments/assets/48542395-4fb0-497b-bffb-10b03661fb26)
-
-</h1>
+<h1 align="center" style="color:#7f5cd1; font-size:45px;">Controle de Produtos</h1>
 
 <h2 style="color:#7f5cd1; font-size:26px;">Descrição</h2>
 
