@@ -17,8 +17,6 @@ export const ToggleButtonTheme = () => {
       ) : (
         <img src={buttonSol} alt="botão vermelho" onClick={toggleTheme} />
       )}
-      {/* <img src={buttonVerde} alt="botão verde" onClick={toggleTheme} />
-      <img src={buttonVermelho} alt="botão vermelho" onClick={toggleTheme} /> */}
     </ToggleButton>
   );
 };
