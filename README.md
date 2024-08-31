@@ -60,8 +60,6 @@ Esta é uma aplicação web desenvolvida em React para controle de produtos. A a
 4. Inicie a aplicação:
     ```sh
     npm start
-    // ou
-    yarn start
     ```
 
 A aplicação estará disponível em [http://localhost:5173](http://localhost:5173).
