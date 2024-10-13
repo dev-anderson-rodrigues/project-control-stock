@@ -55,11 +55,15 @@ Esta é uma aplicação web desenvolvida em React para controle de produtos. A a
 3. Instale as dependências:
     ```sh
     npm install
+       ou
+    yarn
     ```
 
 4. Inicie a aplicação:
     ```sh
-    npm start
+    npm run dev
+      ou
+    yarn dev
     ```
 
 A aplicação estará disponível em [http://localhost:5173](http://localhost:5173).
